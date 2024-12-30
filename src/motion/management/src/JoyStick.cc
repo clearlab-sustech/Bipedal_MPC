@@ -60,17 +60,6 @@ scalar_t JoyStick::getYawVelCmd() {
   }
 }
 
-scalar_t JoyStick::getHeightCmd() {
-  auto msg = joy_msg_.get();
-  if (msg == nullptr) {
-    return 0.058;
-  } else {
-    h_des_ += 0.0003 * (msg->buttons.at(3) - msg->buttons.at(0));
-    h_des_ = std::min(0.32, std::max(0.058, h_des_));
-    return h_des_;
-  }
-}
-
 bool JoyStick::eStop() {
   auto msg = joy_msg_.get();
   if (msg == nullptr) {
