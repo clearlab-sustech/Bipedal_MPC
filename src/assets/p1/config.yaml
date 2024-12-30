@@ -1,0 +1,75 @@
+global:
+  topic_prefix: "PF_A_ysp/"
+  service_names:
+    sim_reset: "sim_reset"
+  topic_names:
+    joints_state: "joints_state"
+    imu: "imu_data"
+    touch_sensor: "touch_sensor"
+    odom: "odom"
+    estimated_states: "estimated_states"
+    actuators_cmds: "actuators_cmds"
+    mode_schedule: "mode_schedule"
+    trajectories: "trajectories"
+  log_dir: "/home/poplar/Desktop/VF-TSC/src/data/sim/t7/wbc3"
+
+model:
+  name: "PF_A"
+  package: "assets"
+  urdf: "/p1/PF_A.urdf"
+  xml: "/p1/PF_A.xml"
+  base_name: "base"
+  foot_names: ["foot_L_Link", "foot_R_Link"]
+  actuated_joints_name:
+    [
+      "abad_L_Joint",
+      "hip_L_Joint",
+      "knee_L_Joint",
+      "abad_R_Joint",
+      "hip_R_Joint",
+      "knee_R_Joint",
+    ]
+  default:
+    joint_pos:
+      [
+        0.0,
+       -0.152,
+        0.351,
+        0.0,
+       -0.152,
+       -0.351,
+      ]
+    base_pos: [0, 0, 0.57]
+    base_quat: [1, 0, 0, 0]
+
+gait:
+  list: ["stance", "walk"]
+
+  stance:
+    modeSequence: ["STANCE"]
+    switchingTimes: [0.0, 0.5]
+
+  walk:
+    modeSequence: ["LF", "RF"]
+    switchingTimes: [0.0, 0.25, 0.5]
+
+  frequency: 500.0
+
+simulation:
+  frequency: # Hz
+    joints_state: 500.0
+    imu: 400.0
+    touch_sensor: 500.0
+    odom: 200.0
+    drop_old_message: 10.0
+
+estimation:
+  dt: 0.001
+  use_odom: True
+
+controller:
+  frequency: 1000.0
+  use_vector_field: false
+
+generation:
+  frequency: 100.0
