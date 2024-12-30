@@ -1,5 +1,5 @@
 # Model Predictive Control for Bipedal Robots TRON 1 in MuJoCo Simulator
-![video](./video.gif)
+![video](./display.gif)
 # Build Package
 ## Install ROS2 
 Refer to [ROS2](https://ros.org/) official doc.

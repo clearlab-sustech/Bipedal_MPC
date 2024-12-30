@@ -65,11 +65,10 @@ simulation:
 
 estimation:
   dt: 0.001
-  use_odom: True
+  use_odom: False
 
 controller:
   frequency: 1000.0
-  use_vector_field: false
 
 generation:
   frequency: 100.0
