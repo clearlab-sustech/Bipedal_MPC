@@ -32,6 +32,15 @@ ros2 launch sim sim_launch.py
 ros2 launch management management_launch.py 
 ```
 
+# Change Velocity
+if don't have the remote controller, you can change the linear velocity and angular velocity on this code file:
+![photo](./velocity_get.jpg)
+
+Then you can change the velocities on the JoyStick::getLinearVelCmd() and JoyStick::getYawVelCmd() (default: 0.4 (linear); 0.0 (angular)
+
+# Future work
+We will focus on converting the C++ work into a respository in python. So please waiting ...
+
 
 
 
