@@ -30,7 +30,9 @@ FootholdOptimization::FootholdOptimization(
     footholds_nominal_pos[foot] =
         pinocchioInterface_ptr_->getFramePose(foot).translation();
     footholds_nominal_pos[foot].z() = 0.0;
-    footholds_nominal_pos[foot].y() *= 0.8;
+    footholds_nominal_pos[foot].y() *= 0.99; // 减少Y方向偏移
+    // 将x位置设置为稍微靠后，避免零速度时落脚点在前方
+    footholds_nominal_pos[foot].x() += 0.047; // 向后偏移5cm
     std::cout << foot << ": " << footholds_nominal_pos[foot].transpose()
               << "\n";
   }

@@ -55,17 +55,12 @@ Stephen Brawner (brawner@gmail.com)
     name="base">
     <inertial>
       <origin
-        xyz="-0.02117014 0.00034639 0.00300161"
+        xyz="0.04576 0.00014 -0.16398"
         rpy="0 0 0" />
       <mass
-        value="5.65937068" />
-      <inertia
-        ixx="0.07000931"
-        ixy="0.00043103"
-        ixz="0.01804734"
-        iyy="0.05662892"
-        iyz="-0.00001883"
-        izz="0.06306006" />
+        value="9.585" />
+      <inertia ixx="140110.479E-06" ixy="534.939E-06" ixz="28184.116E-06"
+                     iyy="110641.449E-06" iyz="-27.278E-06" izz="98944.542E-06"/>
     </inertial>
     <visual>
       <origin
@@ -73,33 +68,51 @@ Stephen Brawner (brawner@gmail.com)
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://assets/p1/meshes/base_link.STL" />
+          filename="package://assets/p1/meshes/base_Link.STL" />
       </geometry>
       <material name="black"/>
     </visual>
     <collision>
-      <origin xyz="-0.04 0 0.09" rpy="0 0 0" />
-      <geometry>
-        <box size="0.2 0.3 0.15" />
-      </geometry>
+        <origin xyz="0.033 0 -0.07" rpy="0 0 0"/>
+        <geometry>
+            <box size="0.265 0.26 0.18"/>
+        </geometry>
     </collision>
   </link>
+
+    <joint name="limx_imu_joint" type="fixed">
+        <origin rpy="0. 0. 0." xyz="0. 0. 0."/>
+        <parent link="base"/>
+        <child link="limx_imu"/>
+    </joint>
+    <!-- Imu link -->
+    <link name="limx_imu">
+        <inertial>
+            <mass value="0.01"/>
+            <origin rpy="0 0 0" xyz="0 0 0"/>
+            <inertia ixx="0.000001" ixy="0" ixz="0" iyy="0.000001" iyz="0" izz="0.000001"/>
+        </inertial>
+        <visual>
+            <origin rpy="0 0 0" xyz="0 0 0"/>
+            <geometry>
+                <box size="0.015 0.015 0.004"/>
+            </geometry>
+        </visual>
+        <material name="orange">
+            <color rgba="255 108 10 255"/>
+        </material>
+    </link>
 
   <link
     name="abad_L_Link">
     <inertial>
       <origin
-        xyz="-0.07010163 0.04726369 0.00010664"
+        xyz="-69.77E-03 44.79E-03 0.57E-03"
         rpy="0 0 0" />
       <mass
-        value="1.03648983" />
-      <inertia
-        ixx="0.00133111"
-        ixy="0.00040056"
-        ixz="-0.00000811"
-        iyy="0.00203159"
-        iyz="0.00000230"
-        izz="0.00178062" />
+        value="1.469" />
+      <inertia ixx="1555.384E-06" ixy="397.78E-06" ixz="-13.10E-06"
+                     iyy="2359.25E-06" iyz="-0.98E-06" izz="2080.92E-06"/>
     </inertial>
     <visual>
       <origin
@@ -107,22 +120,22 @@ Stephen Brawner (brawner@gmail.com)
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://assets/p1/meshes/abad_left_link.STL" />
+          filename="package://assets/p1/meshes/abad_L_Link.STL" />
       </geometry>
       <material name="black"/>
     </visual>
     <collision>
-      <origin xyz="-0.08 0 0" rpy="1.57 0 0" />
-      <geometry>
-        <cylinder length="0.15" radius="0.05" />
-      </geometry>
+        <origin xyz="0.03 0 0" rpy="1.57 0 1.57"/>
+        <geometry>
+            <cylinder length="0.05" radius="0.05"/>
+        </geometry>
     </collision>
   </link>
   <joint
     name="abad_L_Joint"
     type="revolute">
     <origin
-      xyz="0.0142 0.095 -0.08176"
+      xyz="55.56E-03 105E-03 -260.2E-03"
       rpy="0 0 0" />
     <parent
       link="base" />
@@ -130,23 +143,18 @@ Stephen Brawner (brawner@gmail.com)
       link="abad_L_Link" />
     <axis
       xyz="1 0 0" />
-    <limit effort="40.0" lower="-0.383972435" upper="0.785398163" velocity="15.0" />
+    <limit effort="80.0" lower="-0.38397" upper="1.39626" velocity="15.0"/>
   </joint>
   <link
     name="hip_L_Link">
     <inertial>
       <origin
-        xyz="-0.03047400 -0.05446455 -0.03920244"
+        xyz="-28.69E-03 -47.7E-03 -39.92E-03"
         rpy="0 0 0" />
       <mass
-        value="1.73405445" />
-      <inertia
-        ixx="0.01148168"
-        ixy="0.00124007"
-        ixz="-0.00625658"
-        iyy="0.01576674"
-        iyz="0.00159648"
-        izz="0.00699881" />
+        value="2.3" />
+      <inertia ixx="16937.28E-06" ixy="1647.03E-06" ixz="-9232.53E-06"
+                     iyy="22853.28E-06" iyz="2202.40E-06" izz="9334.19E-06"/>
     </inertial>
     <visual>
       <origin
@@ -154,14 +162,14 @@ Stephen Brawner (brawner@gmail.com)
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://assets/p1/meshes/hip_left_link.STL" />
+          filename="package://assets/p1/meshes/hip_L_Link.STL" />
       </geometry>
       <material name="black"/>
     </visual>
     <collision>
-      <origin xyz="-0.10 -0.03 -0.14" rpy="0 0.53 0" />
+      <origin xyz="-0.10 -0.02 -0.14" rpy="0 0.53 0"/>
       <geometry>
-        <cylinder length="0.22" radius="0.035" />
+        <cylinder length="0.18" radius="0.035"/>
       </geometry>
     </collision>
   </link>
@@ -169,7 +177,7 @@ Stephen Brawner (brawner@gmail.com)
     name="hip_L_Joint"
     type="revolute">
     <origin
-      xyz="-0.0802 0.031 0"
+      xyz="-0.077 0.02050 0"
       rpy="0 0 0" />
     <parent
       link="abad_L_Link" />
@@ -177,23 +185,18 @@ Stephen Brawner (brawner@gmail.com)
       link="hip_L_Link" />
     <axis
       xyz="0 1 0" />
-    <limit effort="40.0" lower="-1.047197551" upper="1.483529864" velocity="15.0" />
+    <limit effort="80.0" lower="-1.012291" upper="1.396263" velocity="15.0"/>
   </joint>
   <link
     name="knee_L_Link">
     <inertial>
       <origin
-        xyz="0.05607029 -0.00007153 -0.08804698"
+        xyz="51.68E-03 1.52E-03 -81.48E-03"
         rpy="0 0 0" />
       <mass
-        value="0.25930748" />
-      <inertia
-        ixx="0.00222212"
-        ixy="-0.00000163"
-        ixz="0.00139314"
-        iyy="0.00312233"
-        iyz="0.00000239"
-        izz="0.00093345" />
+        value="0.55" />
+      <inertia ixx="2949.6E-06" ixy="-7.86E-06" ixz="1830.36E-06"
+                     iyy="4199.48E-06" iyz="9.14E-06" izz="1330.18E-06"/>
     </inertial>
     <visual>
       <origin
@@ -201,12 +204,12 @@ Stephen Brawner (brawner@gmail.com)
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://assets/p1/meshes/knee_left_link.STL" />
+          filename="package://assets/p1/meshes/knee_L_Link.STL" />
       </geometry>
       <material name="black"/>
     </visual>
     <collision>
-      <origin xyz="0.078 0 -0.12" rpy="0 -0.55 0" />
+      <origin xyz="0.073 0 -0.12" rpy="0 -0.55 0"/>
       <geometry>
         <cylinder length="0.26" radius="0.015" />
       </geometry>
@@ -216,7 +219,7 @@ Stephen Brawner (brawner@gmail.com)
     name="knee_L_Joint"
     type="revolute">
     <origin
-      xyz="-0.15 -0.021 -0.25981"
+      xyz="-0.1500 -0.02050 -0.25981"
       rpy="0 0 0" />
     <parent
       link="hip_L_Link" />
@@ -224,23 +227,18 @@ Stephen Brawner (brawner@gmail.com)
       link="knee_L_Link" />
     <axis
       xyz="0 -1 0" />
-    <limit effort="40" lower="-1.012290966" upper="1.256637061" velocity="15.0" />
+    <limit effort="80" lower="-0.872665" upper="1.361357" velocity="15"/>
   </joint>
   <link
     name="foot_L_Link">
     <inertial>
       <origin
-        xyz="-0.00245810 0.00000000 0.03706242"
+        xyz="-1.29E-03 -0.01E-03 5.68E-03"
         rpy="0 0 0" />
       <mass
-        value="0.14047647" />
-      <inertia
-        ixx="0.00007326"
-        ixy="0.0"
-        ixz="0.00000519"
-        iyy="0.00007655"
-        iyz="0.0"
-        izz="0.00005623" />
+        value="0.18" />
+      <inertia ixx="97.46E-06" ixy="-0.04E-06" ixz="5.67E-06"
+                iyy="99.92E-06" iyz="-0.01E-06" izz="74.7E-06"/>
     </inertial>
     <visual>
       <origin
@@ -248,14 +246,14 @@ Stephen Brawner (brawner@gmail.com)
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://assets/p1/meshes/foot_left_link.STL" />
+          filename="package://assets/p1/meshes/foot_L_Link.STL" />
       </geometry>
       <material name="black"/>
     </visual>
     <collision>
-      <origin xyz="0 0 0.035" rpy="0 0 0" />
+      <origin rpy="0 0 0" xyz="0 0 -0.0"/>
       <geometry>
-        <sphere radius="0.035" />
+        <sphere radius="0.032" />
       </geometry>
     </collision>
   </link>
@@ -264,7 +262,7 @@ Stephen Brawner (brawner@gmail.com)
     type="fixed"
     dont_collapse="true">
     <origin
-      xyz="0.15 0 -0.29066"
+      xyz="0.150 0 -0.25981"
       rpy="0 0 0" />
     <parent
       link="knee_L_Link" />
@@ -274,21 +272,62 @@ Stephen Brawner (brawner@gmail.com)
       xyz="0 0 0" />
   </joint>
 
+    <link name="contact_L_Link">
+        <inertial>
+            <origin xyz="-6.4629E-05 5.464E-05 0.0011936" rpy="0 0 0"/>
+            <mass value="1e-6"/>
+            <inertia ixx="1e-12" ixy="0" ixz="0" iyy="1e-12" iyz="0" izz="1e-12"/>
+        </inertial>
+    </link>
+    <joint name="contact_L_Joint" type="fixed">
+        <origin xyz="0 0 -0.032" rpy="0 0 0"/>
+        <parent link="foot_L_Link"/>
+        <child link="contact_L_Link"/>
+        <axis xyz="0 1 0"/>
+        <limit lower="-0" upper="0" effort="60" velocity="50"/>
+    </joint>
+
+    <transmission name="abad_L_Joint_tran">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="abad_L_Joint">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="abad_L_Joint_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="hip_L_Joint_tran">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="hip_L_Joint">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="hip_L_Joint_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="knee_L_Joint_tran">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="knee_L_Joint">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="knee_L_Joint_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+
   <link
     name="abad_R_Link">
     <inertial>
       <origin
-        xyz="-0.07010283 -0.04726372 0.00010253"
+        xyz="-69.77E-03 -44.79E-03 0.57E-03"
         rpy="0 0 0" />
       <mass
-        value="1.03648872" />
-      <inertia
-        ixx="0.00133125"
-        ixy="-0.00040058"
-        ixz="-0.00000791"
-        iyy="0.00203161"
-        iyz="-0.00000238"
-        izz="0.00178049" />
+        value="1.469" />
+      <inertia ixx="1555.384E-06" ixy="-397.78E-06" ixz="-13.10E-06"
+                iyy="2359.25E-06" iyz="0.98E-06" izz="2080.92E-06"/>
     </inertial>
     <visual>
       <origin
@@ -296,14 +335,14 @@ Stephen Brawner (brawner@gmail.com)
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://assets/p1/meshes/abad_right_link.STL" />
+          filename="package://assets/p1/meshes/abad_R_Link.STL" />
       </geometry>
       <material name="black"/>
     </visual>
     <collision>
-      <origin xyz="-0.08 0 0" rpy="1.57 0 0" />
+      <origin xyz="0.03 0 0" rpy="1.57 0 1.57" />
       <geometry>
-        <cylinder length="0.15" radius="0.05" />
+        <cylinder length="0.05" radius="0.05" />
       </geometry>
     </collision>
   </link>
@@ -311,7 +350,7 @@ Stephen Brawner (brawner@gmail.com)
     name="abad_R_Joint"
     type="revolute">
     <origin
-      xyz="0.0142 -0.095 -0.08176"
+      xyz="55.56E-03 -105E-03 -260.2E-03"
       rpy="0 0 0" />
     <parent
       link="base" />
@@ -319,23 +358,18 @@ Stephen Brawner (brawner@gmail.com)
       link="abad_R_Link" />
     <axis
       xyz="1 0 0" />
-    <limit effort="40.0" lower="-0.785398163" upper="0.383972435" velocity="15.0" />
+    <limit effort="80.0" lower="-1.39626" upper="0.38397" velocity="15.0"/>
   </joint>
   <link
     name="hip_R_Link">
     <inertial>
       <origin
-        xyz="-0.03047721 0.05446458 -0.03919637"
+        xyz="-28.69E-03 47.7E-03 -39.92E-03"
         rpy="0 0 0" />
       <mass
-        value="1.73405240" />
-      <inertia
-        ixx="0.01148221"
-        ixy="-0.00123983"
-        ixz="-0.00625649"
-        iyy="0.01576712"
-        iyz="-0.00159690"
-        izz="0.00699866" />
+        value="2.3" />
+      <inertia ixx="16937.28E-06" ixy="-1647.03E-06" ixz="-9232.53E-06"
+                iyy="22853.28E-06" iyz="-2202.40E-06" izz="9334.19E-06"/>
     </inertial>
     <visual>
       <origin
@@ -343,22 +377,22 @@ Stephen Brawner (brawner@gmail.com)
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://assets/p1/meshes/hip_right_link.STL" />
+          filename="package://assets/p1/meshes/hip_R_Link.STL" />
       </geometry>
       <material name="black"/>
     </visual>
     <collision>
-      <origin xyz="-0.10 0.03 -0.14" rpy="0 0.53 0" />
-      <geometry>
-        <cylinder length="0.22" radius="0.035" />
-      </geometry>
+        <origin xyz="-0.10 0.02 -0.14" rpy="0 0.53 0"/>
+        <geometry>
+            <cylinder length="0.18" radius="0.035"/>
+        </geometry>
     </collision>
   </link>
   <joint
     name="hip_R_Joint"
     type="revolute">
     <origin
-      xyz="-0.0802 -0.031 0"
+      xyz="-0.077 -0.02050 0"
       rpy="0 0 0" />
     <parent
       link="abad_R_Link" />
@@ -366,23 +400,18 @@ Stephen Brawner (brawner@gmail.com)
       link="hip_R_Link" />
     <axis
       xyz="0 -1 0" />
-    <limit effort="40.0" lower="-1.483529864" upper="1.047197551" velocity="15.0" />
+    <limit effort="80.0" lower="-1.396263" upper="1.012291" velocity="15.0"/>
   </joint>
   <link
     name="knee_R_Link">
     <inertial>
       <origin
-        xyz="0.05607065 0.00007138 -0.08804757"
+        xyz="51.68E-03 -1.52E-03 -81.48E-03"
         rpy="0 0 0" />
       <mass
-        value="0.25930895" />
-      <inertia
-        ixx="0.00222213"
-        ixy="0.00000163"
-        ixz="0.00139315"
-        iyy="0.00312235"
-        iyz="-0.00000239"
-        izz="0.00093346" />
+        value="0.55" />
+      <inertia ixx="2949.6E-06" ixy="7.86E-06" ixz="1830.36E-06"
+                iyy="4199.48E-06" iyz="-9.14E-06" izz="1330.18E-06"/>
     </inertial>
     <visual>
       <origin
@@ -390,22 +419,22 @@ Stephen Brawner (brawner@gmail.com)
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://assets/p1/meshes/knee_right_link.STL" />
+          filename="package://assets/p1/meshes/knee_R_Link.STL" />
       </geometry>
       <material name="black"/>
     </visual>
     <collision>
-      <origin xyz="0.078 0 -0.12" rpy="0 -0.55 0" />
-      <geometry>
-        <cylinder length="0.26" radius="0.015" />
-      </geometry>
+        <origin xyz="0.078 0 -0.12" rpy="0 -0.55 0"/>
+        <geometry>
+            <cylinder length="0.26" radius="0.015"/>
+        </geometry>
     </collision>
   </link>
   <joint
     name="knee_R_Joint"
     type="revolute">
     <origin
-      xyz="-0.15 0.021 -0.25981"
+      xyz="-0.1500 0.02050 -0.25981"
       rpy="0 0 0" />
     <parent
       link="hip_R_Link" />
@@ -413,23 +442,18 @@ Stephen Brawner (brawner@gmail.com)
       link="knee_R_Link" />
     <axis
       xyz="0 1 0" />
-    <limit effort="40.0" lower="-1.256637061" upper="1.012290966" velocity="15.0" />
+    <limit effort="80" lower="-1.361357" upper="0.872665" velocity="15"/>
   </joint>
   <link
     name="foot_R_Link">
     <inertial>
       <origin
-        xyz="-0.00245810 0.00000000 0.03706242"
+        xyz="-1.29E-03 0.01E-03 5.68E-03"
         rpy="0 0 0" />
       <mass
-        value="0.14047647" />
-      <inertia
-        ixx="0.00007326"
-        ixy="0.0"
-        ixz="0.00000519"
-        iyy="0.00007655"
-        iyz="0.0"
-        izz="0.00005623" />
+        value="0.18" />
+      <inertia ixx="97.46E-06" ixy="0.04E-06" ixz="5.67E-06"
+                iyy="99.92E-06" iyz="0.01E-06" izz="74.7E-06"/>
     </inertial>
     <visual>
       <origin
@@ -437,14 +461,14 @@ Stephen Brawner (brawner@gmail.com)
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://assets/p1/meshes/foot_right_link.STL" />
+          filename="package://assets/p1/meshes/foot_R_Link.STL" />
       </geometry>
       <material name="black"/>
     </visual>
     <collision>
-      <origin xyz="0 0 0.035" rpy="0 0 0" />
+      <origin xyz="0 0 -0.0" rpy="0 0 0" />
       <geometry>
-        <sphere radius="0.035" />
+        <sphere radius="0.032" />
       </geometry>
     </collision>
   </link>
@@ -453,7 +477,7 @@ Stephen Brawner (brawner@gmail.com)
     type="fixed"
     dont_collapse="true">
     <origin
-      xyz="0.15 0 -0.29066"
+      xyz="0.150 0 -0.25981"
       rpy="0 0 0" />
     <parent
       link="knee_R_Link" />
@@ -462,4 +486,19 @@ Stephen Brawner (brawner@gmail.com)
     <axis
       xyz="0 0 0" />
   </joint>
+
+    <link name="contact_R_Link">
+        <inertial>
+            <origin xyz="-6.4629E-05 5.464E-05 0.0011936" rpy="0 0 0"/>
+            <mass value="1e-6"/>
+            <inertia ixx="1e-12" ixy="0" ixz="0" iyy="1e-12" iyz="0" izz="1e-12"/>
+        </inertial>
+    </link>
+    <joint name="contact_R_Joint" type="fixed">
+        <origin xyz="0 0 -0.032" rpy="0 0 0"/>
+        <parent link="foot_R_Link"/>
+        <child link="contact_R_Link"/>
+        <axis xyz="0 1 0"/>
+        <limit lower="-0" upper="0" effort="60" velocity="50"/>
+    </joint>
 </robot>

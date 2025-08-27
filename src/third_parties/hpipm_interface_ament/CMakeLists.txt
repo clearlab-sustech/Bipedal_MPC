@@ -22,7 +22,7 @@ file(MAKE_DIRECTORY ${HPIPM_BUILD_DIR})
 
 # Download & build source
 FetchContent_Declare(hpipmDownload
-  GIT_REPOSITORY https://github.com/mayataka/hpipm-cpp.git
+  GIT_REPOSITORY https://github.com/81578823/hpipm-cpp.git
   GIT_TAG main
   UPDATE_COMMAND ""
   SOURCE_DIR ${HPIPM_DOWNLOAD_DIR}

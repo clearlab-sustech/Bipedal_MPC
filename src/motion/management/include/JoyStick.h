@@ -37,6 +37,7 @@ private:
 
   scalar_t h_des_ = 0.0;
   vector3_t vel_cmd;
+  scalar_t angular_velocity = 0.0;
 };
 
 } // namespace clear

@@ -8,26 +8,34 @@
 
 namespace clear {
 
-/** size_t trajectory type. */
+/**
+ * @brief 核心数据类型定义 / Core data type definitions
+ * 
+ * 定义了整个双足机器人控制系统中使用的基本数据类型
+ * Defines basic data types used throughout the bipedal robot control system
+ */
+
+/** 尺寸轨迹类型 / Size trajectory type. */
 using size_array_t = std::vector<size_t>;
-/** Array of size_t trajectory type. */
+/** 尺寸轨迹数组类型 / Array of size_t trajectory type. */
 using size_array2_t = std::vector<size_array_t>;
 
-/** Scalar type. */
+/** 标量类型 / Scalar type. */
 using scalar_t = double;
-/** Scalar trajectory type. */
+/** 标量轨迹类型 / Scalar trajectory type. */
 using scalar_array_t = std::vector<scalar_t>;
-/** Array of scalar trajectory type. */
+/** 标量轨迹数组类型 / Array of scalar trajectory type. */
 using scalar_array2_t = std::vector<scalar_array_t>;
-/** Array of arrays of scalar trajectory type. */
+/** 标量轨迹三维数组类型 / Array of arrays of scalar trajectory type. */
 using scalar_array3_t = std::vector<scalar_array2_t>;
 
-using quaternion_t = Eigen::Quaternion<scalar_t>;
-using vector2_t = Eigen::Matrix<scalar_t, 2, 1>;
-using vector3_t = Eigen::Matrix<scalar_t, 3, 1>;
-using vector4_t = Eigen::Matrix<scalar_t, 4, 1>;
-using vector6_t = Eigen::Matrix<scalar_t, 6, 1>;
-using vector12_t = Eigen::Matrix<scalar_t, 12, 1>;
+// Eigen数据类型定义 / Eigen data type definitions
+using quaternion_t = Eigen::Quaternion<scalar_t>;     // 四元数类型 / Quaternion type
+using vector2_t = Eigen::Matrix<scalar_t, 2, 1>;      // 2D向量类型 / 2D vector type
+using vector3_t = Eigen::Matrix<scalar_t, 3, 1>;      // 3D向量类型 / 3D vector type  
+using vector4_t = Eigen::Matrix<scalar_t, 4, 1>;      // 4D向量类型 / 4D vector type
+using vector6_t = Eigen::Matrix<scalar_t, 6, 1>;      // 6D向量类型（空间运动向量）/ 6D vector type (spatial motion vector)
+using vector12_t = Eigen::Matrix<scalar_t, 12, 1>;    // 12D向量类型（MPC状态向量）/ 12D vector type (MPC state vector)
 /** Dynamic-size vector type. */
 using vector_t = Eigen::Matrix<scalar_t, Eigen::Dynamic, 1>;
 /** Dynamic vector's trajectory type. */
